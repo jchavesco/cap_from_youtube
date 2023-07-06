@@ -12,20 +12,29 @@
 - It uses YT-DLP (https://github.com/yt-dlp/yt-dlp), which is a fork of youtube-dl that is updated frequently.
 
 # Requirement
-* YT-DLP
-* OpenCV
-* NumPy
+* YT-DLP==2023.3.4
+* OpenCV>=4.7
+* NumPy==1.24.4
+
+> Opencv not listed in pyproject.toml dependencies to avoid overwriting previous custom opencv installation.
  
-# Installation
-- The easiest way is to install it with pip:
+# Package generation and installation
+
+Generate package with:
 
 ```bash
-pip install cap_from_youtube
+python3 -m build .
 ```
-- You can also install it from GitHub:
+
+And upload uing twine:
 
 ```bash
-pip install git+https://github.com/ibaiGorordo/cap_from_youtube
+ twine upload -r your-pypi-repo dist/*
+```
+
+Then, install with
+```bash
+pip3 install cap-from-youtube==0.0.10 --extra-index-url=https://user:pass@your.repo.com/nexus/repository/pypi-yours/simple
 ```
 
 # Usage
